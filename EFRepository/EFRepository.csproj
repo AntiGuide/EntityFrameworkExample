@@ -49,7 +49,11 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EFConsumerRepository.cs" />
+    <Compile Include="EFEventRepository.cs" />
+    <Compile Include="EFGameSessionRepository.cs" />
     <Compile Include="EFRepository.cs" />
+    <Compile Include="EFSessionScope.cs" />
     <Compile Include="MyContext.cs" />
     <Compile Include="MyInitializer.cs" />
   </ItemGroup>

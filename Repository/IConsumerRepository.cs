@@ -1,4 +1,4 @@
 ﻿namespace ClientServer.Repository {
-    interface IConsumerRepository : IRepository<Consumer> {
+    public interface IConsumerRepository : IRepository<Consumer> {
     }
 }

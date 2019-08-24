@@ -1,4 +1,4 @@
 ﻿namespace ClientServer.Repository {
-    interface IEventRepository : IRepository<Event> {
+    public interface IEventRepository : IRepository<Event> {
     }
 }

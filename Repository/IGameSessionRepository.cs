@@ -1,4 +1,4 @@
 ﻿namespace ClientServer.Repository {
-    interface IGameSessionRepository : IRepository<GameSession> {
+    public interface IGameSessionRepository : IRepository<GameSession> {
     }
 }

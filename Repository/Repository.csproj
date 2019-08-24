@@ -46,6 +46,7 @@
     <Compile Include="IEventRepository.cs" />
     <Compile Include="IGameSessionRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="ISessionScope.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
