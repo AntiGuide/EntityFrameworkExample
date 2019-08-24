@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5B2A2EDA-6378-40D9-AA4B-F4EDA2D23BC4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>Repository</RootNamespace>
     <AssemblyName>Repository</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
@@ -39,6 +42,10 @@
     <Compile Include="Consumer.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="GameSession.cs" />
+    <Compile Include="IConsumerRepository.cs" />
+    <Compile Include="IEventRepository.cs" />
+    <Compile Include="IGameSessionRepository.cs" />
+    <Compile Include="IRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ClientServer.Client.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -51,7 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EntityFrameworkExample\Repository\Repository.csproj">
+    <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{5B2A2EDA-6378-40D9-AA4B-F4EDA2D23BC4}</Project>
       <Name>Repository</Name>
     </ProjectReference>

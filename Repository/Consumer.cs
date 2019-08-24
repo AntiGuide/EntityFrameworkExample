@@ -1,7 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ClientServer.Repository {
     public class Consumer : IDisposable {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public ICollection<GameSession> GameSessions { get; set; }
+
         public GameSession CreateGameSession() {
             return new GameSession();
         }

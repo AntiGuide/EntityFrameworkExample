@@ -1,6 +1,8 @@
 ﻿namespace ClientServer.Repository {
     public class Event {
-        public int Count;
-        public string EventName;
+        public int Id { get; set; }
+
+        public int Count { get; set; }
+        public string EventName { get; set; }
     }
 }
