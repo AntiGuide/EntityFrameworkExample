@@ -5,12 +5,12 @@ using System;
 namespace ClientServer.Server {
     class Program {
         static void Main(string[] args) {
-            using (var ctx = new MyContext()) {
-                foreach (var item in ctx.Consumers) {
-                    Console.WriteLine(item.Id + " | " + item.Name);
-                }
-
+            var controller = new EventController(() => new EFSessionScope());
+            using (var host = new Host<EFSessionScope>()) {
+                host.Start();
+                Console.WriteLine("Server gestartet");
                 Console.ReadKey();
+                host.Close();
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ClientServer.Repository;
+using System.Linq;
 
 namespace ClientServer.EFRepository {
     public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class {
@@ -15,16 +16,12 @@ namespace ClientServer.EFRepository {
             return ret;
         }
 
-        //public IEnumerable<TEntity> GetAll() {
-        //    return ctx.Set<TEntity>().ToList();
-        //}
+        public IEnumerable<TEntity> GetAll() {
+            return ctx.Set<TEntity>().ToList();
+        }
 
         public TEntity GetById(int id) {
             return ctx.Set<TEntity>().Find(id);
-        }
-
-        IEnumerable<TEntity> IRepository<TEntity>.GetAll() {
-            throw new System.NotImplementedException();
         }
     }
 }

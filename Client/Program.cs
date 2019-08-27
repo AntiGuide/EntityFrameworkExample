@@ -128,7 +128,7 @@ namespace ClientServer.Client {
             int total = 0;
             foreach (var ev in events) {
                 int eventIndex;
-                Assert.IsTrue(eventIndices.TryGetValue(ev.EventName, out eventIndex));
+                Assert.IsTrue(eventIndices.TryGetValue(ev.Name, out eventIndex));
                 Assert.AreEqual(eventOccurrences[eventIndex], ev.Count);
                 total += ev.Count;
             }
@@ -156,7 +156,7 @@ namespace ClientServer.Client {
                 int total = 0;
                 foreach (var ev in events) {
                     int eventIndex;
-                    Assert.IsTrue(eventIndices.TryGetValue(ev.EventName, out eventIndex));
+                    Assert.IsTrue(eventIndices.TryGetValue(ev.Name, out eventIndex));
                     Assert.AreEqual(eventFollowers[i][eventIndex], ev.Count);
                     total += ev.Count;
                 }
@@ -184,7 +184,7 @@ namespace ClientServer.Client {
             int total = 0;
             foreach (var ev in events) {
                 int eventIndex;
-                Assert.IsTrue(eventIndices.TryGetValue(ev.EventName, out eventIndex));
+                Assert.IsTrue(eventIndices.TryGetValue(ev.Name, out eventIndex));
                 Assert.AreEqual(eventBeingLast[eventIndex], ev.Count);
                 total += ev.Count;
             }

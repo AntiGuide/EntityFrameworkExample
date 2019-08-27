@@ -40,6 +40,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converter.cs" />
+    <Compile Include="EventController.cs" />
+    <Compile Include="EventService.cs" />
+    <Compile Include="Host.cs" />
     <Compile Include="MyController.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
@@ -52,8 +56,13 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{382f1233-9ee7-43c5-ba5f-fb2bc4ffe7d1}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EFRepository\EFRepository.csproj">
       <Project>{EFB55CDF-87A3-44CB-811D-A7BC5D1DDC9D}</Project>
       <Name>EFRepository</Name>
