@@ -1,12 +1,11 @@
-﻿using ClientServer.Repository;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace ClientServer.Common {
     [ServiceContract]
     public interface IEventService {
         [OperationContract]
-        DTOConsumer CreateConsumer(string name);
+        DTOConsumer CreateConsumer();
 
         [OperationContract]
         DTOGameSession CreateSession(int consumerId);
@@ -22,5 +21,14 @@ namespace ClientServer.Common {
 
         [OperationContract]
         IEnumerable<DTOEvent> GetEvents();
+
+        [OperationContract]
+        IEnumerable<DTOEventInfo> GetAllEventsOrderedByCountDesc();
+
+        [OperationContract]
+        IEnumerable<DTOEventInfo> GetNextEventsOrderedByCountDesc(string name);
+
+        [OperationContract]
+        IEnumerable<DTOEventInfo> GetLastEventsOrderedByCountDesc();
     }
 }

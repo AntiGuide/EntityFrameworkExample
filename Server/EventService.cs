@@ -7,8 +7,8 @@ namespace ClientServer.Server {
     class EventService<T> : IEventService where T : ISessionScope, new() {
         private EventController controller = new EventController(() => new T());
 
-        public DTOConsumer CreateConsumer(string name) {
-            return controller.CreateConsumer(name).ToDTO();
+        public DTOConsumer CreateConsumer() {
+            return controller.CreateConsumer().ToDTO();
         }
 
         public DTOGameSession CreateSession(int consumerId) {
@@ -29,6 +29,18 @@ namespace ClientServer.Server {
 
         public IEnumerable<DTOEvent> GetEvents() {
             return controller.GetEvents().Select(e => e.ToDTO());
+        }
+
+        public IEnumerable<DTOEventInfo> GetAllEventsOrderedByCountDesc() {
+            return controller.GetAllEventsOrderedByCountDesc().Select(e => e.ToDTO());
+        }
+
+        public IEnumerable<DTOEventInfo> GetNextEventsOrderedByCountDesc(string name) {
+            return controller.GetNextEventsOrderedByCountDesc(name).Select(e => e.ToDTO());
+        }
+
+        public IEnumerable<DTOEventInfo> GetLastEventsOrderedByCountDesc() {
+            return controller.GetLastEventsOrderedByCountDesc().Select(e => e.ToDTO());
         }
     }
 }

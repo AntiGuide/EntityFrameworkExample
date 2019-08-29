@@ -18,7 +18,7 @@ namespace ClientServer.Client {
         /// <summary>
         /// Number of game sessions to create for testing
         /// </summary>
-        private const int GAME_SESSIONS = 1000;
+        private const int GAME_SESSIONS = 100;
 
         /// <summary>
         /// Maximum number of events per game session during testing

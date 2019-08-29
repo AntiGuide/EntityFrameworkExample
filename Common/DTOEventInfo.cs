@@ -1,6 +1,5 @@
 ﻿namespace ClientServer.Common {
-    public class DTOEvent {
-        public int Id { get; set; }
+    public class DTOEventInfo {
         public string Name { get; set; }
         public int Count { get; set; }
     }

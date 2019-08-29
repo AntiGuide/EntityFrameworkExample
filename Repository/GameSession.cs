@@ -8,5 +8,10 @@ namespace ClientServer.Repository {
         public Consumer Consumer { get; set; }
 
         public ICollection<Event> Events { get; set; }
+
+        public int? LastEventId { get; set; }
+        //private Event lastEvent;
+        //public Event LastEvent { get { return lastEvent; } set { lastEvent = value; } }
+        public virtual Event LastEvent { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ClientServer.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ClientServer.Server {
     public delegate ISessionScope Factory();
@@ -12,9 +13,9 @@ namespace ClientServer.Server {
             this.factory = factory;
         }
 
-        public Consumer CreateConsumer(string name) {
+        public Consumer CreateConsumer() {
             using (var scope = factory.Invoke()) {
-                var consumer = new Consumer { Name = name };
+                var consumer = new Consumer(false);
                 consumer = scope.ConsumerRepository.Create(consumer);
                 Console.WriteLine("Consumer with ID " + consumer.Id + " and Name \"" + consumer.Name + "\" created.");
                 return consumer;
@@ -34,6 +35,13 @@ namespace ClientServer.Server {
             using (var scope = factory.Invoke()) {
                 var e = new Event { Name = name, GameSessionId = sessionId };
                 e = scope.EventRepository.Create(e);
+                var session = scope.GameSessionRepository.GetById(sessionId);
+                if (session.LastEvent != null) {
+                    session.LastEvent.NextEventId = e.Id;
+                    session.LastEvent.NextEvent = e;
+                }
+
+                scope.GameSessionRepository.SetLastCreatedEvent(sessionId, e.Id);
                 Console.WriteLine("Event with ID " + e.Id + " and Name \"" + e.Name + "\" created.");
                 return e;
             }
@@ -54,6 +62,24 @@ namespace ClientServer.Server {
         public IEnumerable<Event> GetEvents() {
             using (var scope = factory.Invoke()) {
                 return scope.EventRepository.GetAll();
+            }
+        }
+
+        public IEnumerable<EventInfo> GetAllEventsOrderedByCountDesc() {
+            using (var scope = factory.Invoke()) {
+                return scope.EventRepository.GetAllOrderedByCountDesc();
+            }
+        }
+
+        public IEnumerable<EventInfo> GetNextEventsOrderedByCountDesc(string name) {
+            using (var scope = factory.Invoke()) {
+                return scope.EventRepository.GetNextEventsOrderedByCountDesc(name);
+            }
+        }
+
+        public IEnumerable<EventInfo> GetLastEventsOrderedByCountDesc() {
+            using (var scope = factory.Invoke()) {
+                return scope.EventRepository.GetLastEventsOrderedByCountDesc();
             }
         }
     }

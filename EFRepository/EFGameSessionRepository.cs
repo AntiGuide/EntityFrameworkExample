@@ -5,5 +5,10 @@ namespace ClientServer.EFRepository {
         public EFGameSessionRepository(MyContext ctx) : base(ctx) {
 
         }
+
+        public void SetLastCreatedEvent(int sessionId, int eventId) {
+            GetById(sessionId).LastEventId = eventId;
+            ctx.SaveChanges();
+        }
     }
 }

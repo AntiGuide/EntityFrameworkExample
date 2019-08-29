@@ -14,9 +14,10 @@ namespace ClientServer.Client {
             using (var factory = new ChannelFactory<IEventService>(binding, address)) {
                 IEventService svc = factory.CreateChannel();
 
-                var myConsumer = svc.CreateConsumer("ConsumerName");
-                var mySession = svc.CreateSession(myConsumer.Id);
-                svc.CreateEvent("BeganToPlay", mySession.Id);
+                var myConsumers = new DTOConsumer[] { svc.CreateConsumer(), svc.CreateConsumer(), svc.CreateConsumer() };
+                var mySessions = new DTOGameSession[] { svc.CreateSession(myConsumers[0].Id), svc.CreateSession(myConsumers[1].Id), svc.CreateSession(myConsumers[0].Id), svc.CreateSession(myConsumers[2].Id) };
+                mySessions.ToList().ForEach(s => svc.CreateEvent("BeganToPlay", s.Id));
+                svc.CreateEvent("CompleteTutorial", mySessions[1].Id);
 
                 Console.WriteLine("CONSUMERS" + Environment.NewLine + "---------");
                 svc.GetConsumers().ToList().ForEach(c => Console.WriteLine(c.Id + " | " + c.Name));
@@ -25,7 +26,7 @@ namespace ClientServer.Client {
                 svc.GetSessions().ToList().ForEach(s => Console.WriteLine(s.Id));
                 Console.WriteLine();
                 Console.WriteLine("EVENTS" + Environment.NewLine + "------");
-                svc.GetEvents().ToList().ForEach(c => Console.WriteLine(c.Id + " | " + c.EventName));
+                svc.GetEvents().ToList().ForEach(c => Console.WriteLine(c.Id + " | " + c.Name));
 
                 (svc as IChannel).Close();
             }

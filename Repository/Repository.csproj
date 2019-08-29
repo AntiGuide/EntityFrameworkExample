@@ -41,12 +41,24 @@
   <ItemGroup>
     <Compile Include="Consumer.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="EventInfo.cs" />
     <Compile Include="GameSession.cs" />
     <Compile Include="IConsumerRepository.cs" />
     <Compile Include="IEventRepository.cs" />
     <Compile Include="IGameSessionRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="ISessionScope.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ServiceModel" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{382F1233-9EE7-43C5-BA5F-FB2BC4FFE7D1}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
