@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ClientServer.Repository {
+﻿namespace ClientServer.Repository {
     /// <summary>A single event that ocurred during a game session</summary>
     public class Event {
 
