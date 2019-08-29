@@ -2,15 +2,22 @@
 using ClientServer.Repository;
 
 namespace ClientServer.EFRepository {
+    /// <summary>Connection to the dependency injected implementations of data repositories</summary>
     public class EFSessionScope : ISessionScope {
+        /// <summary>The context that this session and its repositories operate in</summary>
         private Lazy<MyContext> ctx = new Lazy<MyContext>(() => new MyContext(), false);
 
         private Lazy<IGameSessionRepository> gameSessionRepository;
         private Lazy<IConsumerRepository> consumerRepository;
         private Lazy<IEventRepository> eventRepository;
 
+        /// <summary>The interface to operate on all GameSession data</summary>
         public IGameSessionRepository GameSessionRepository => gameSessionRepository.Value;
+
+        /// <summary>The interface to operate on all Consumer data</summary>
         public IConsumerRepository ConsumerRepository => consumerRepository.Value;
+
+        /// <summary>The interface to operate on all Event data</summary>
         public IEventRepository EventRepository => eventRepository.Value;
 
         public EFSessionScope() {
@@ -21,18 +28,15 @@ namespace ClientServer.EFRepository {
 
         private bool disposedValue = false;
 
-        protected virtual void Dispose(bool disposing) {
+        /// <summary>Disposes the Lazy DBContext</summary>
+        public void Dispose() {
             if (!disposedValue) {
-                if (disposing && ctx.IsValueCreated) {
+                if (ctx.IsValueCreated) {
                     ctx.Value.Dispose();
                 }
 
                 disposedValue = true;
             }
-        }
-
-        public void Dispose() {
-            Dispose(true);
         }
     }
 }

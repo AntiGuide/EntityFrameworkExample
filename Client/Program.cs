@@ -18,7 +18,7 @@ namespace ClientServer.Client {
         /// <summary>
         /// Number of game sessions to create for testing
         /// </summary>
-        private const int GAME_SESSIONS = 100;
+        private const int GAME_SESSIONS = 1000;
 
         /// <summary>
         /// Maximum number of events per game session during testing
@@ -128,7 +128,7 @@ namespace ClientServer.Client {
             int total = 0;
             foreach (var ev in events) {
                 int eventIndex;
-                Assert.IsTrue(eventIndices.TryGetValue(ev.Name, out eventIndex));
+                Assert.IsTrue(eventIndices.TryGetValue(ev.EventName, out eventIndex));
                 Assert.AreEqual(eventOccurrences[eventIndex], ev.Count);
                 total += ev.Count;
             }
@@ -156,7 +156,7 @@ namespace ClientServer.Client {
                 int total = 0;
                 foreach (var ev in events) {
                     int eventIndex;
-                    Assert.IsTrue(eventIndices.TryGetValue(ev.Name, out eventIndex));
+                    Assert.IsTrue(eventIndices.TryGetValue(ev.EventName, out eventIndex));
                     Assert.AreEqual(eventFollowers[i][eventIndex], ev.Count);
                     total += ev.Count;
                 }
@@ -184,7 +184,7 @@ namespace ClientServer.Client {
             int total = 0;
             foreach (var ev in events) {
                 int eventIndex;
-                Assert.IsTrue(eventIndices.TryGetValue(ev.Name, out eventIndex));
+                Assert.IsTrue(eventIndices.TryGetValue(ev.EventName, out eventIndex));
                 Assert.AreEqual(eventBeingLast[eventIndex], ev.Count);
                 total += ev.Count;
             }

@@ -44,7 +44,6 @@
     <Compile Include="EventController.cs" />
     <Compile Include="EventService.cs" />
     <Compile Include="Host.cs" />
-    <Compile Include="MyController.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>

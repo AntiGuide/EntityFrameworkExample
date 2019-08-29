@@ -1,8 +1,8 @@
 ﻿using ClientServer.EFRepository;
-using ClientServer.Repository;
 using System;
 
 namespace ClientServer.Server {
+    /// <summary>Starts the server and leaves it running until a key is pressed.</summary>
     class Program {
         static void Main(string[] args) {
             var controller = new EventController(() => new EFSessionScope());
