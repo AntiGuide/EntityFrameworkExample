@@ -22,9 +22,8 @@ namespace ClientServer.EFRepository {
         }
 
         /// <summary>
-        /// Queries all events that happened after the events with the given name including their counts
+        /// Queries all events that happened as the last event in a sessionincluding their counts
         /// </summary>
-        /// <param name="eventName">The event to search for</param>
         /// <returns>Returns events and their counts ordered by count (descending)</returns>
         public IEnumerable<EventInfo> GetLastEventsOrderedByCountDesc() {
             var ret = ctx.Events
@@ -35,10 +34,11 @@ namespace ClientServer.EFRepository {
                 (key, g) => new EventInfo { Name = key, Count = g.Count() }).OrderByDescending(a => a.Count).ToList();
             return ret;
         }
-
+        
         /// <summary>
-        /// Queries all events that happened as the last event in a sessionincluding their counts
+        /// Queries all events that happened after the events with the given name including their counts
         /// </summary>
+        /// <param name="name">The event to search for</param>
         /// <returns>Returns events and their counts ordered by count (descending)</returns>
         public IEnumerable<EventInfo> GetNextEventsOrderedByCountDesc(string name) {
             return ctx.Events

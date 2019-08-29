@@ -40,7 +40,7 @@ namespace ClientServer.Common {
         /// <summary>
         /// Queries all events that happened after the events with the given name including their counts
         /// </summary>
-        /// <param name="eventName">The event to search for</param>
+        /// <param name="name">The event to search for</param>
         /// <returns>Returns events and their counts ordered by count (descending)</returns>
         [OperationContract]
         IEnumerable<DTOEventInfo> GetNextEventsOrderedByCountDesc(string name);
